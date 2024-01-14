@@ -4,7 +4,7 @@ import random
 pygame.init()
 width = 800
 height = 600
-game_display = pygame.display.set_mode((width, height))
+game_display = pygame.display.set_mode((width, height), 0, 400)
 pygame.display.set_caption('Color Match')
 clock = pygame.time.Clock()
 white = (255, 255, 255)
@@ -17,7 +17,31 @@ object_size = 50
 object_x = random.randint(0, width - object_size)
 object_y = 0
 object_speed = 5
-object_color = (255, 0, 0)
+randR = random.randint(0, 255)
+if randR > 122.5:
+    randR=255
+elif randR < 122.5:
+    randR=0 
+
+if randR == 0:
+    randG=random.randint(0, 255)
+    if randG > 122.5:
+        randG=255
+    elif randG < 122.5:
+        randG=0 
+else:
+    randG=0
+
+if randG==0:
+    randB=random.randint(0, 255)
+    if randB > 122.5:
+        randB=255
+    elif randB < 122.5:
+        randB=0 
+R = randR
+G = randG
+B = randB
+object_color = (R, G, B)
 score = 0
 font = pygame.font.SysFont(None, 30)
 def display_score(score):
@@ -48,7 +72,37 @@ while not game_over:
         or player_y < object_y + object_size < player_y + player_size
     ):
         score += 1
-        object_x = random.randint(0, width - object_size)
+        object_y = 0
+        
+        
+        randR = random.randint(0, 255)
+        if randR > 122.5:
+            randR=255
+        elif randR < 122.5:
+            randR=0 
+
+        if randR == 0:
+            randG=random.randint(0, 255)
+        if randG > 122.5:
+            randG=255
+        elif randG < 122.5:
+            randG=0 
+        else:
+            randG=0
+        if randG==0:
+            randB=random.randint(0, 255)
+        if randB > 122.5:
+            randB=255
+        elif randB < 122.5:
+            randB=0 
+    R = randR
+    G = randG
+    B = randB
+    object_color = (R, G, B)
+        
+        
+        
+    #object_x = random.randint(0, width - object_size)
 
 
 
