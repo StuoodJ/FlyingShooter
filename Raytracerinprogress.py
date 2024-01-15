@@ -1,6 +1,5 @@
 # Example file showing a circle moving on screen
 import pygame
-
 # pygame setup
 pygame.init()
 display = pygame.display
@@ -16,6 +15,7 @@ rayX = 0
 rayY = 0
 rayW = rayRes * 10
 rayH = rayRes * 10
+import functions
 
 while running:
     # poll for events
@@ -27,21 +27,7 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("black")
 
-    
-
-
-    if rayX < dW - 9:
-        bRX = rayX
-        bRY = rayY
-        pygame.draw.rect(screen, (255, 255, 255), (bRX, bRY, rayW, rayH))
-        rayX += rayRes * 10
-    elif rayX >= dW:
-        rayX = 0
-        rayY += rayRes * 10
-    elif rayY >= dH:
-        rayY = 0
-        rayX = 0
-        
+    functions.Raytrace(pygame.draw.rect, screen, rayX, rayY, rayW, rayH, dW, dH, rayRes)
     pygame.draw.rect(screen, rayCol, (rayX, rayY, rayW, rayH))
     # flip() the display to put your work on screen
     display.flip()
