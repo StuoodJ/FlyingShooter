@@ -22,3 +22,5 @@ def Raytrace():
     elif rayY >= dH:
         rayY = 0
         rayX = 0
+    
+    return rayX, rayY, rayW, rayH, screen, dW, dH, rayRes
