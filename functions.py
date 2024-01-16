@@ -1,13 +1,15 @@
+import pygame
+import Raytracerinprogress as r
 
-def Raytrace(pgame, screen, rx, ry, rw, rh, dw, dh, rR):
-    if rx < dw - 9:
-        brx = rx
-        bry = ry
-        pgame(screen, (255, 255, 255), (brx, bry, rw, rh))
-        rx += rR * 10
-    elif rx >= dw:
-        rx = 0
-        ry += rR * 10
-    elif ry >= dh:
-        ry = 0
-        rx = 0
+def Raytrace():
+    if r.rayX < r.dW - 9:
+        brx = r.rayX
+        bry = r.rayY
+        pygame.draw.rect(r.screen, (255, 255, 255), (brx, bry, r.rayW, r.rayH))
+        r.rayX += r.rayRes * 10
+    elif r.rayX >= r.dW:
+        r.rayX = 0
+        r.rayY += r.rayRes * 10
+    elif r.rayY >= r.dH:
+        r.rayY = 0
+        r.rayX = 0
