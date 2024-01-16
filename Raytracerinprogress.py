@@ -2,20 +2,12 @@
 import pygame
 # pygame setup
 pygame.init()
-display = pygame.display
-dW = 1280
-dH = 720
-screen = display.set_mode((dW, dH))
+import functions
+from functions import *
 clock = pygame.time.Clock()
 running = True
 dt = 0
 rayCol = (255, 0, 0)
-rayRes = 5
-rayX = 0
-rayY = 0
-rayW = rayRes * 10
-rayH = rayRes * 10
-from functions import Raytrace
 
 while running:
     # poll for events

@@ -1,5 +1,14 @@
 import pygame
-from Raytracerinprogress import *
+
+display = pygame.display
+dW = 1280
+dH = 720
+screen = display.set_mode((dW, dH))
+rayRes = 5
+rayX = 0
+rayY = 0
+rayW = rayRes * 10
+rayH = rayRes * 10
 
 def Raytrace():
     if rayX < dW - 9:
