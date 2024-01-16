@@ -1,4 +1,5 @@
 import pygame
+from Raytracerinprogress import *
 
 def Raytrace():
     if rayX < dW - 9:
