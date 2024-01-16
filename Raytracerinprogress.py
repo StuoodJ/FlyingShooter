@@ -15,7 +15,7 @@ rayX = 0
 rayY = 0
 rayW = rayRes * 10
 rayH = rayRes * 10
-import functions
+from functions import Raytrace
 
 while running:
     # poll for events
@@ -27,7 +27,7 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("black")
 
-    functions.Raytrace()
+    Raytrace()
     pygame.draw.rect(screen, rayCol, (rayX, rayY, rayW, rayH))
     # flip() the display to put your work on screen
     display.flip()
