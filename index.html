@@ -12,6 +12,7 @@
         console.log(pyodide.runPython(`
             import sys
             sys.version
+            import pygame
         `));
         pyodide.runPython(platformer.py);
       }
