@@ -1,47 +1,77 @@
 <!doctype html>
 <html>
   <head>
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+      <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
   </head>
-
   <body>
-    <p>
-      You can execute any Python code. Just enter something in the box below and
-      click the button.
-    </p>
-    <input id="code" value="sum([1, 2, 3, 4, 5])" />
-    <button onclick="evaluatePython()">Run</button>
-    <br />
-    <br />
-    <div>Output:</div>
-    <textarea id="output" style="width: 100%;" rows="6" disabled></textarea>
-
-    <script>
-      const output = document.getElementById("output");
-      const code = document.getElementById("code");
-
-      function addToOutput(s) {
-        output.value += ">>>" + code.value + "\n" + s + "\n";
-      }
-
-      output.value = "Initializing...\n";
-      // init Pyodide
-      async function main() {
+    Pyodide test page <br>
+    Open your browser console to see Pyodide output
+    <script type="text/javascript">
+      async function main(){
         let pyodide = await loadPyodide();
-        output.value += "Ready!\n";
-        return pyodide;
-      }
-      let pyodideReadyPromise = main();
+        pyodide.runPython(`
+        import pygame
 
-      async function evaluatePython() {
-        let pyodide = await pyodideReadyPromise;
-        try {
-          let output = pyodide.runPython(code.value);
-          addToOutput(output);
-        } catch (err) {
-          addToOutput(err);
-        }
+        pygame.init()
+        display = pygame.display
+        screen = display.set_mode([1280, 720])
+        clock = pygame.time.Clock()
+        running = True
+        dt = 0
+        pC = (255, 0, 0)
+        pX = 0
+        toppY = 0
+        pW = 50
+        pH = 50
+        floorX = 0
+        floorY = 500
+        floorW = 1280
+        floorH = 220
+        while running:
+            # poll for events
+            # pygame.QUIT event means the user clicked X to close your window
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                  running = False
+          # fill the screen with a color to wipe away anything from last frame
+          screen.fill("black")
+
+          pygame.draw.rect(screen, pC, (pX, toppY, pW, pH))
+          floor = pygame.draw.rect(screen, (255, 255, 255), (floorX, floorY, floorW, floorH))
+          bottompY = toppY + pH
+    
+          keys = pygame.key.get_pressed()
+          if keys[pygame.K_UP]:
+              toppY -= 300 * dt
+          elif bottompY < floorY:
+              toppY += 30
+        
+          if keys[pygame.K_LEFT]:
+              pX -= 300 * dt
+          if keys[pygame.K_RIGHT]:
+              pX += 300 * dt
+
+
+    
+
+          if bottompY >= floorY:
+              toppY = 500 - pH
+
+
+
+
+          display.flip()
+    
+          # limits FPS to 60
+          # dt is delta time in seconds since last frame, used for framerate-
+          # independent physics.
+          dt = clock.tick(60) / 1000
+
+      pygame.quit()
+
+        `);
       }
+      main();
     </script>
   </body>
 </html>
