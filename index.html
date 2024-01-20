@@ -1,13 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title> game repository </title>
-  <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
-  <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
-</head>
-<body>
-  <py-script src="platformer.py">
-    <py-lib src="pygame">
-  </py-script>
-</body>
+<!doctype html>
+<html>
+  <head>
+      <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+  </head>
+  <body>
+    Pyodide test page <br>
+    Open your browser console to see Pyodide output
+    <script type="text/javascript">
+      async function main(){
+        let pyodide = await loadPyodide();
+        console.log(pyodide.runPython(`
+            import sys
+            sys.version
+        `));
+        pyodide.runPython("platformer.py");
+      }
+      main();
+    </script>
+  </body>
 </html>
