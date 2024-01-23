@@ -1,5 +1,8 @@
 import pygame
 import math
+import player
+from player import Player
+playercon = 5
 pygame.init()
 display = pygame.display
 dW = 1280
@@ -10,6 +13,10 @@ running = True
 dt = 0
 bW = 50
 bH = 50
+playercolor = (255, 0, 0)
+playerx = dW/2+bW/2
+playery = dH/2+bH/2
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
@@ -18,12 +25,9 @@ while running:
             running = False
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("black")
-    mousepos = pygame.mouse.get_pos()
-    mousex = mousepos[0]
-    mousey = mousepos[1]
-    blockx = mousex-bW/2
-    blocky = mousey-bH/2
-    pygame.draw.rect(screen, (255,0,0), (blockx, blocky, bW, bH))
+    playerrect = (playerx, playery, bW, bH)
+    from player import *
+    Player(screen, playercolor, playerrect, dt)
     display.flip()
     
     # limits FPS to 60
