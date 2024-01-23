@@ -29,6 +29,8 @@ while running:
             running = False
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("black")
+    Xcon = 0
+    Ycon = 0
     keys = pygame.key.get_pressed()
     control(Xcon, Ycon, keys)
     Player(screen, playercolor, playerx, playery, bW, bH, dt, Xcon, Ycon)
