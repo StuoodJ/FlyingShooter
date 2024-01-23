@@ -17,6 +17,7 @@ playercolor = (255, 0, 0)
 playerx = dW/2+bW/2
 playery = dH/2+bH/2
 from player import *
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
@@ -28,12 +29,12 @@ while running:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
         playerx -= 350 * dt
+    if keys[pygame.K_UP]:
+        playery -= 350 * dt
     if keys[pygame.K_RIGHT]:
         playerx += 350 * dt
-    if keys[pygame.K_UP]:
-        playery -= 650 * dt
     if keys[pygame.K_DOWN]:
-        playery += 650 * dt  
+        playery += 350 * dt
     Player(screen, playercolor, playerx, playery, bW, bH)
     display.flip()
     
