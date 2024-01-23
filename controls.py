@@ -5,16 +5,16 @@ def control(playerx, playery, dt, keys):
     if keys[pygame.K_LEFT]:
         #Lef
         playerx -= 350 * dt
-        return float([playerx])
+        return playerx
     if keys[pygame.K_RIGHT]:
         #Right
         playerx += 350 * dt
-        return float([playerx])
+        return playerx
     if keys[pygame.K_UP]:
         #Up
         playery -= 350 * dt
-        return float([playery])
+        return playery
     if keys[pygame.K_DOWN]:
         #Down
         playerx += 350 * dt
-        return float([playery])
+        return playery
