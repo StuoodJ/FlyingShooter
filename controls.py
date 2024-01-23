@@ -2,8 +2,7 @@ import pygame
 
 Xcon = 0
 Ycon = 0
-def control():
-    keys = pygame.key.get_pressed()
+def control(keys):
 #Xcontrols
     if keys[pygame.K_LEFT]:
         Xcon = -1
