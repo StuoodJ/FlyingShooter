@@ -29,7 +29,7 @@ while running:
     screen.fill("black")
     keys = pygame.key.get_pressed()
     control(playerx, playery, dt, keys)
-    Player(screen, playercolor, playerx, playery, bW, bH, dt)
+    Player(screen, playercolor, playerx, playery, bW, bH)
     display.flip()
     
     # limits FPS to 60
