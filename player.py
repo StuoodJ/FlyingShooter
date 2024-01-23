@@ -1,3 +1,4 @@
+import pygame
 
 def Player(screen, playercolor, playerrect, dt):
     keys = pygame.key.get_pressed()
