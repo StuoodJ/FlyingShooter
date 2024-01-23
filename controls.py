@@ -1,16 +1,16 @@
 import pygame
 
-def control(Xcon, Ycon, keys):
+def control(playerx, playery, dt, keys):
 #Xcontrols
     if keys[pygame.K_LEFT]:
-        Xcon = -1
-        return Xcon
+        #Lef
+        playerx -= 350 * dt
     if keys[pygame.K_RIGHT]:
-        Xcon = 1
-        return Xcon
+        #Right
+        playerx += 350 * dt
     if keys[pygame.K_UP]:
-        Ycon = -1
-        return Ycon
+        #Up
+        playery -= 350 * dt
     if keys[pygame.K_DOWN]:
-        Ycon = 1
-        return Ycon
+        #Down
+        playerx += 350 * dt
