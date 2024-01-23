@@ -1,8 +1,6 @@
 import pygame
 
-Xcon = 0
-Ycon = 0
-def control(keys):
+def control(Xcon, Ycon, keys):
 #Xcontrols
     if keys[pygame.K_LEFT]:
         Xcon = -1

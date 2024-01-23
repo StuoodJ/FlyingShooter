@@ -1,6 +1,6 @@
 import pygame
-from controls import Xcon, Ycon
-def Player(screen, playercolor, playerx, playery, bW, bH, dt):
+
+def Player(screen, playercolor, playerx, playery, bW, bH, dt, Xcon, Ycon):
     playerrect = (playerx, playery, bW, bH)
     #playercode
     if Xcon > 0:

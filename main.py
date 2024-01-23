@@ -16,8 +16,11 @@ bH = 50
 playercolor = (255, 0, 0)
 playerx = dW/2+bW/2
 playery = dH/2+bH/2
+Xcon = 0
+Ycon = 0
 from player import *
 from controls import control
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
@@ -27,8 +30,8 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("black")
     keys = pygame.key.get_pressed()
-    control(keys)
-    Player(screen, playercolor, playerx, playery, bW, bH, dt)
+    control(Xcon, Ycon, keys)
+    Player(screen, playercolor, playerx, playery, bW, bH, dt, Xcon, Ycon)
     display.flip()
     
     # limits FPS to 60
