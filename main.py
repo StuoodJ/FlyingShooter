@@ -19,7 +19,7 @@ playery = dH/2+bH/2
 Xcon = 0
 Ycon = 0
 from player import *
-from controls import control
+from controls import *
 
 while running:
     # poll for events
