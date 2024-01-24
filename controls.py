@@ -4,8 +4,7 @@ def control(playerx, playery, dt, keys):
 #Xcontrols
     if keys[pygame.K_LEFT]:
         #Lef
-        playerx -= 350 * dt
-        return
+        return playerx.__sub__(playerx - 350*dt)
     if keys[pygame.K_RIGHT]:
         #Right
         playerx += 350 * dt
