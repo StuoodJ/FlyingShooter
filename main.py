@@ -17,7 +17,6 @@ playercolor = (255, 0, 0)
 playerx = dW/2+bW/2
 playery = dH/2+bH/2
 from player import *
-from controls import *
 
 while running:
     # poll for events
@@ -28,7 +27,18 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("black")
     keys = pygame.key.get_pressed()
-    control(playerx, playery, dt, keys)
+    if keys[pygame.K_LEFT]:
+        #Left
+        playery -= 350 * dt
+    if keys[pygame.K_RIGHT]:
+        #Right
+        playerx += 350 * dt
+    if keys[pygame.K_UP]:
+        #Up
+        playery -= 350 * dt
+    if keys[pygame.K_DOWN]:
+        #Down
+        playery += 350 * dt
     Player(screen, playercolor, playerx, playery, bW, bH)
     display.flip()
     
