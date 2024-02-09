@@ -1,5 +1,6 @@
 import pygame
 import math
+import random
 playercon = 5
 pygame.init()
 display = pygame.display
@@ -7,7 +8,7 @@ dW = 600
 dH = 600
 screen = display.set_mode([dW, dH])
 clock = pygame.time.Clock()
-running = True
+
 #/VARIABLES
 white = (255,255,255)
 black = (0,0,0)
@@ -20,9 +21,23 @@ bH = dH//10
 playercolor = red
 playerx = dW/2+bW/2
 playery = dH/2+bH/2
+#/WALLFUNCTION
+blocks = []
+x = 0
+def createwall(length,vertical, horizontal, x, y, width, height):
+    for _ in range(length):
+        block = pygame.Rect(x,y, width, height)
+        blocks.append(block)
+        if horizontal is True:
+            x += width
+        elif vertical is True:
+            y += height
+createwall(dH, True, False, 0, 0, 1, 1)
+createwall(dW, False, True, 0, 0, 1, 1)
+createwall(dH, True, False, dW-1, 0, 1, 1)
+createwall(dW, False, True, 0, dH-1, 1, 1)
 #/IMPORTS/RUN
-from playerscript import *
-
+running = True
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
@@ -31,7 +46,14 @@ while running:
             running = False
     # fill the screen with a color to wipe away anything from last frame
     screen.fill(black)
-#/CONTROLS
+#/PLAYERSCRIPT
+    #/COLLISIONS
+    player = pygame.Rect(playerx, playery, bW, bH)
+    if player.collidelistall(blocks):
+        playercolor = green
+    else:
+        playercolor = red
+    #/CONTROLS
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
         #Left
@@ -45,26 +67,13 @@ while running:
     if keys[pygame.K_DOWN]:
         #Down
         playery += 350 * dt
-#/COLLISIONS
-    if playerx+bW >= dW:
-        playerx = dW-bW
-    if playerx <= 0:
-        playerx = 0
-    if playery+bH >= dH:
-        playery = dH-bH
-    if playery <= 0:
-        playery = 0
-#/RENDERMAP
-    def blockcreate(screen, x, y, blockwidth, blockheight, color):
-        r = pygame.Rect(x, y, blockwidth, blockheight)
-        rd = pygame.draw.rect(screen, color, r)
-        
-        
 
-#/RENDERMISC
-    blockcreate(screen, 0, 0, bW, bH, white)
-    blockcreate(screen, 70, 0, bW, bH, white)
-    Player(screen, playercolor, playerx, playery, bW, bH)
+#/RENDER
+    pygame.draw.rect(screen, playercolor, player)
+
+    for blockf in blocks:
+        pygame.draw.rect(screen, white, blockf)
+#/SCRIPTEND
     display.flip()
     
     # limits FPS to 60
