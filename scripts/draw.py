@@ -1,10 +1,10 @@
 import pygame
 
-def createwall(list, block, len, ve, ho, x, y, wd, hg):
-    for _ in range(len):
-        block = pygame.Rect(x, y, wd, hg)
+def createwall(list, block, length, vertical, horizontal, x, y, width, height):
+    for _ in range(length):
+        block = pygame.Rect(x, y, width, height)
         list.append(block)
-        if ho is True:
-            x += wd
-        elif ve is True:
-            y += hg
+        if horizontal is True:
+            x += width
+        elif vertical is True:
+            y += height
